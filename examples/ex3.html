@@ -25,7 +25,10 @@
 			// create a BART with 3 blue and 4 red balloons balloons using the default settings
 			$("#bart").bart( { b: [ { b: 3, o: { color: 'blue' } },
 						{ b: 4, o: { color: 'red' } }
-					      ]
+					      ],
+                        s: {
+                            sndpath: '../sounds/' // path to sound files
+                        }
 					 } );
 		});
 	

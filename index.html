@@ -23,7 +23,14 @@
 		$(document).ready(function() {
 		
 			// create a BART with default values using 10 balloons
-			$("#bart").bart( 30 );
+			$("#bart").bart( 
+                { b: [ 
+                        { b: 10, o: { color: 'blue' } },
+                        { b: 10, o: { color: 'red' } },
+                        { b: 10, o: { color: 'yellow' } }
+                    ]
+                }
+            );
 		});
 	
 	//]]>

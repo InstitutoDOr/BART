@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+  
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+
+	<title>oBART: Example 3</title>
+        
+	<meta charset="utf-8" />
+	
+	<!-- these files are required for the BART to work    -->
+	<script type="text/javascript" src="src/jquery-3.0.0.min.js"></script>	<!-- basic javascript library for dom manipulation -->
+	<script type="text/javascript" src="src/jcanvas.min.js"></script>      	<!-- the canvas plugin -->
+	<script type="text/javascript" src="src/jquery.bart.js"></script>       <!-- the main BART plugin -->
+	<link rel="stylesheet" type="text/css" href="src/jquery.bart.css" />    <!-- additional styles for to make the BART look fancy -->
+        
+	<!-- additional scripts to run the demo on this page -->
+	<script type="text/javascript">
+	//<![CDATA[
+	
+		// initialize the BART after the page has loaded
+		$(document).ready(function() {
+
+			// create a BART with 3 blue and 4 red balloons balloons using the default settings
+			$("#bart").bart( { b: [ { b: 3, o: { color: 'blue' } },
+						{ b: 4, o: { color: 'red' } }
+					      ]
+					 } );
+		});
+	
+	//]]>
+	</script>
+    
+	</head>
+	
+	<body>
+
+	<h1 style="text-align:center;">Online Balloon Analogue Risk Task (oBART)</h1>
+	<h2 style="text-align:center;">Example 3</h2>
+                        
+	<!-- load BART here -->
+	<div id="bart" style="margin: auto; text-align: center;"></div>
+        
+	<p style="text-align:center;">For more information see <a href="http://timo.gnambs.at/">http://timo.gnambs.at</a>.</p>
+
+	<br /><br/>
+	<h2>Instructions</h2>
+	
+	<ol>
+		<li>Load all required files for the BART in the head of the page:
+<pre><code>
+&lt;script type="text/javascript" src="src/jquery-3.0.0.min.js"&gt;&lt;/script&gt;	&lt;!-- basic javascript library for dom manipulation --&gt;
+&lt;script type="text/javascript" src="src/jcanvas.min.js"&gt;&lt;/script&gt;      	&lt;!-- the canvas plugin --&gt;
+&lt;script type="text/javascript" src="src/jquery.bart.js"&gt;&lt;/script&gt;       &lt;!-- the main BART plugin --&gt;
+&lt;link rel="stylesheet" type="text/css" href="src/jquery.bart.css" /&gt;    &lt;!-- additional styles for to make the BART look fancy --&gt;
+</pre></code>
+		</li>
+		<li>Create an element in the body of the page with a unique <code>id</code>-attribute (here: "bart"):
+<pre><code>&lt;div id="bart"&gt;&lt;/div&gt;</pre></code>
+		</li>
+		<li>Create a script section in the head of the page:
+<pre><code>
+&lt;script type="text/javascript"&gt;
+&lt;/script&gt;
+</pre></code>
+		</li>
+		<li>Initialize the BART script after the page has loaded:
+<pre><code>
+&lt;script type="text/javascript"&gt;
+	$(document).ready(function() {   // initialize the BART after the page has loaded
+	});
+&lt;/script&gt;
+</pre></code>
+		</li>
+		<li>Define the BART (e.g., number and color of balloons) using the <code>id</code> defined in step 2 (see head of <code>src/jquery.bart.js</code> for configuration options):
+<pre><code>
+&lt;script type="text/javascript"&gt;
+	// create a BART with 3 blue and 4 red balloons balloons using the default settings
+	$("#bart").bart( { b: [ { b: 3, o: { color: '#000000' } },
+				{ b: 4, o: { color: '#00FF00' } }
+			      ]
+			 } );
+	});
+&lt;/script&gt;
+</pre></code>
+		If an object with an element named <code>b</code> is passed to the <code>bart()</code>-function and the element <code>b</code> is an array, different types of balloons can be created. Each element of the array is itself an object with two elements <code>b</code> and <code>o</code> referring to the number of balloons and their settings (see Example 2).
+		</li>
+	</ol>
+	
+
+       
+	</body>
+
+</html>

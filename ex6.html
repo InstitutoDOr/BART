@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+  
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+
+	<title>oBART: Example 6</title>
+	
+	<meta charset="utf-8" />
+        
+	<!-- these files are required for the BART to work    -->
+	<script type="text/javascript" src="src/jquery-3.0.0.min.js"></script>	<!-- basic javascript library for dom manipulation -->
+	<script type="text/javascript" src="src/jcanvas.min.js"></script>      	<!-- the canvas plugin -->
+	<script type="text/javascript" src="src/jquery.bart.js"></script>       <!-- the main BART plugin -->
+	<link rel="stylesheet" type="text/css" href="src/jquery.bart.css" />    <!-- additional styles for to make the BART look fancy -->
+        
+	<!-- additional scripts to run the demo on this page -->
+	<script type="text/javascript">
+	//<![CDATA[
+	
+		// initialize the BART after the page has loaded
+		$(document).ready(function() {
+		
+			// user-defined function invoked when starting the BART
+			var myload = function() {  alert('Good luck!'); }
+			
+			// user-defined function invoked after an explosion
+			var myexplode = function() { alert('BOOM! Better luck next time!'); }
+			
+			// user-defined function invoked after finishing the BART
+			var myend = function() {
+				var points = 0;
+				for(var i = 1; i <= 5; i++) { // run over all balloons
+					if(Number($('#expl' + i).attr('value')) == 0) {
+						points = points + Number($('#pump' + i).attr('value')) // get information saved to the hidden form element
+					}
+				}
+				alert('You achieved ' + points + ' points.');
+			}
+		
+			// create a BART with 5 balloons
+			$("#bart").bart( { b: 5,                       // create 5 balloons
+					   o: { color: 'green',        // color of balloons
+						earnings: 1,           // points earned for each pump
+						popprob: 10,           // probability of popping; defined as 1 out of popprop
+						onexplode: myexplode   // user-defined function invoked after an explosion
+					      },
+					   s: { frmids_pumps: ['pump1', 'pump2', 'pump3', 'pump4', 'pump5'],    // IDs for hidden form elements used to save the number of pumps for a given balloon
+					        frmids_exploded: ['expl1', 'expl2', 'expl3', 'expl4', 'expl5'], // IDs for hidden form elements used to save whether a balloon exploded
+						onload: myload,         // user-defined function invoked after starting the BART
+						onend:  myend           // user-defined function invoked after finishing the BART
+					      }
+					 } );
+		});
+	
+	//]]>
+	</script>
+    
+	</head>
+	
+	<body>
+
+	<h1 style="text-align:center;">Online Balloon Analogue Risk Task (oBART)</h1>
+	<h2 style="text-align:center;">Example 6</h2>
+                        
+	<!-- load BART here -->
+	<div id="bart" style="margin: auto; text-align: center;"></div>
+        
+	<p style="text-align:center;">For more information see <a href="http://timo.gnambs.at/">http://timo.gnambs.at</a>.</p>
+
+	<br /><br/>
+	<h2>Instructions</h2>
+	
+	<ol>
+		<li>Load all required files for the BART in the head of the page:
+<pre><code>
+&lt;script type="text/javascript" src="src/jquery-3.0.0.min.js"&gt;&lt;/script&gt;	&lt;!-- basic javascript library for dom manipulation --&gt;
+&lt;script type="text/javascript" src="src/jcanvas.min.js"&gt;&lt;/script&gt;      	&lt;!-- the canvas plugin --&gt;
+&lt;script type="text/javascript" src="src/jquery.bart.js"&gt;&lt;/script&gt;       &lt;!-- the main BART plugin --&gt;
+&lt;link rel="stylesheet" type="text/css" href="src/jquery.bart.css" /&gt;    &lt;!-- additional styles for to make the BART look fancy --&gt;
+</pre></code>
+		</li>
+		<li>Create an element in the body of the page with a unique <code>id</code>-attribute (here: "bart"):
+<pre><code>&lt;div id="bart"&gt;&lt;/div&gt;</pre></code>
+		</li>
+		<li>Create a script section in the head of the page:
+<pre><code>
+&lt;script type="text/javascript"&gt;
+&lt;/script&gt;
+</pre></code>
+		</li>
+		<li>Initialize the BART script after the page has loaded:
+<pre><code>
+&lt;script type="text/javascript"&gt;
+	$(document).ready(function() {   // initialize the BART after the page has loaded
+	});
+&lt;/script&gt;
+</pre></code>
+		</li>
+		<li>Define the BART (e.g., number and color of balloons) using the <code>id</code> defined in step 2 (see head of <code>src/jquery.bart.js</code> for configuration options):
+<pre><code>
+&lt;script type="text/javascript"&gt;
+	$(document).ready(function() {   // initialize the BART after the page has loaded
+		// create a BART with 5 balloons
+		$("#bart").bart( { b: 5,                       // create 5 balloons
+				   o: { color: 'green',        // color of balloons
+					earnings: 1,           // points earned for each pump
+					popprob: 10,           // probability of popping; defined as 1 out of popprop
+					onexplode: myexplode   // user-defined function invoked after an explosion
+				       },
+				    s: { frmids_pumps: ['pump1', 'pump2', 'pump3', 'pump4', 'pump5'],    // IDs for hidden form elements used to save the number of pumps for a given balloon
+					 frmids_exploded: ['expl1', 'expl2', 'expl3', 'expl4', 'expl5'], // IDs for hidden form elements used to save whether a balloon exploded
+					 onload: myload,         // user-defined function invoked after starting the BART
+					 onend:  myend           // user-defined function invoked after finishing the BART
+					}
+				  } );
+	});
+&lt;/script&gt;
+</pre></code>
+		There are several hooks to define your own functions that are invoked after starting the test (<code>onload</code>), after finishing the test (<code>onend</code>), after displaying a balloon (<code>onstart</code>), after inflating an balloon (<code>oninflate</code>), and after an explosion (<code>onexplode</code>). Here the function <code>myexplode</code> is run each time a balloon explodes:
+<pre><code>
+		// user-defined function invoked after an explosion
+		var myexplode = function() { alert('BOOM! Better luck next time!'); }
+</pre></code>
+		The function <code>myload</code> is run one time right after the BART has been loaded and the user can start the test:
+<pre><code>
+		// user-defined function invoked when starting the BART
+		var myload = function() {  alert('Good luck!'); }
+</pre></code>
+		The function <code>myend</code> is run one time right after finishing the BART. Here the number of points are calculated based on the data saved to the hidden form elements:
+<pre><code>
+		// user-defined function invoked after finishing the BART
+		var myend = function() {
+			var points = 0;
+			for(var i = 1; i &lt;= 5; i++) { // run over all balloons
+				if(Number($('#expl' + i).attr('value')) == 0) {
+					points = points + Number($('#pump' + i).attr('value')) // get information saved to the hidden form element
+				}
+			}
+			alert('You achieved ' + points + ' points.');
+		}
+</pre></code>
+		</li>
+	</ol>
+	
+
+       
+	</body>
+
+</html>

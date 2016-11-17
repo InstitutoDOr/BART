@@ -4,29 +4,44 @@
 
 Load all required files for the BART in the head of the page:
 
+```
 <script type="text/javascript" src="src/jquery-3.0.0.min.js"></script>	<!-- basic javascript library for dom manipulation -->
 <script type="text/javascript" src="src/jcanvas.min.js"></script>      	<!-- the canvas plugin -->
 <script type="text/javascript" src="src/jquery.bart.js"></script>       <!-- the main BART plugin -->
 <link rel="stylesheet" type="text/css" href="src/jquery.bart.css" />    <!-- additional styles for to make the BART look fancy -->
+```
+
 Create an element in the body of the page with a unique id-attribute (here: "bart"):
+
+```
 <div id="bart"></div>
+```
+
 Create a script section in the head of the page:
 
+```
 <script type="text/javascript">
 </script>
+```
+
 Initialize the BART script after the page has loaded:
 
+```
 <script type="text/javascript">
 	$(document).ready(function() {   // initialize the BART after the page has loaded
 	});
 </script>
-Define the BART (e.g., number and color of balloons) using the id defined in step 2 (see head of src/jquery.bart.js for configuration options):
+```
 
+Define the BART (e.g., number and color of balloons) using the id defined in step 2 (see head of src/jquery.bart.js for configuration options):
+```
 <script type="text/javascript">
 	$(document).ready(function() {   // initialize the BART after the page has loaded
 		$("#bart").bart( 10 );   // create a BART with default values using 10 balloons
 	});
 </script>
+```
+
 If only a single number is passed to the bart()-function, the number indicates the number of balloons.
 
 ====
@@ -37,24 +52,37 @@ If only a single number is passed to the bart()-function, the number indicates t
 
 Load all required files for the BART in the head of the page:
 
+```
 <script type="text/javascript" src="src/jquery-3.0.0.min.js"></script>	<!-- basic javascript library for dom manipulation -->
 <script type="text/javascript" src="src/jcanvas.min.js"></script>      	<!-- the canvas plugin -->
 <script type="text/javascript" src="src/jquery.bart.js"></script>       <!-- the main BART plugin -->
 <link rel="stylesheet" type="text/css" href="src/jquery.bart.css" />    <!-- additional styles for to make the BART look fancy -->
+```
+
 Create an element in the body of the page with a unique id-attribute (here: "bart"):
+
+```
 <div id="bart"></div>
+```
 Create a script section in the head of the page:
 
+```
 <script type="text/javascript">
 </script>
+```
+
 Initialize the BART script after the page has loaded:
 
+```
 <script type="text/javascript">
 	$(document).ready(function() {   // initialize the BART after the page has loaded
 	});
 </script>
+```
+
 Define the BART (e.g., number and color of balloons) using the id defined in step 2 (see head of src/jquery.bart.js for configuration options):
 
+```
 <script type="text/javascript">
 	$(document).ready(function() {   // initialize the BART after the page has loaded
 		$("#bart").bart( { b: 5,                    // create 5 balloons
@@ -65,6 +93,8 @@ Define the BART (e.g., number and color of balloons) using the id defined in ste
 			         } );
 	});
 </script>
+```
+
 If an object with two elements named b and o is passed to the bart()-function, element b refers to the balloons (a single number indicates the number of balloons), whereas element o defines various settings for all balloons. The element color of o sets the color of the balloons (as hexcode), earnings sets the number of points received for each pump, and popprob sets the probability for an explosion at the first pump as 1 / popprob (e.g., popprob: 100 gives a probability of 1 / 100 = 0.001 = 1%).
 
 ====
@@ -75,24 +105,38 @@ If an object with two elements named b and o is passed to the bart()-function, e
 
 Load all required files for the BART in the head of the page:
 
+```
 <script type="text/javascript" src="src/jquery-3.0.0.min.js"></script>	<!-- basic javascript library for dom manipulation -->
 <script type="text/javascript" src="src/jcanvas.min.js"></script>      	<!-- the canvas plugin -->
 <script type="text/javascript" src="src/jquery.bart.js"></script>       <!-- the main BART plugin -->
 <link rel="stylesheet" type="text/css" href="src/jquery.bart.css" />    <!-- additional styles for to make the BART look fancy -->
+```
+
 Create an element in the body of the page with a unique id-attribute (here: "bart"):
+
+```
 <div id="bart"></div>
+```
+
 Create a script section in the head of the page:
 
+```
 <script type="text/javascript">
 </script>
+```
+
 Initialize the BART script after the page has loaded:
 
+```
 <script type="text/javascript">
 	$(document).ready(function() {   // initialize the BART after the page has loaded
 	});
 </script>
+```
+
 Define the BART (e.g., number and color of balloons) using the id defined in step 2 (see head of src/jquery.bart.js for configuration options):
 
+```
 <script type="text/javascript">
 	// create a BART with 3 blue and 4 red balloons balloons using the default settings
 	$("#bart").bart( { b: [ { b: 3, o: { color: '#000000' } },
@@ -101,6 +145,8 @@ Define the BART (e.g., number and color of balloons) using the id defined in ste
 			 } );
 	});
 </script>
+```
+
 If an object with an element named b is passed to the bart()-function and the element b is an array, different types of balloons can be created. Each element of the array is itself an object with two elements b and o referring to the number of balloons and their settings (see Example 2).
 
 ====
@@ -111,24 +157,38 @@ If an object with an element named b is passed to the bart()-function and the el
 
 Load all required files for the BART in the head of the page:
 
+```
 <script type="text/javascript" src="src/jquery-3.0.0.min.js"></script>	<!-- basic javascript library for dom manipulation -->
 <script type="text/javascript" src="src/jcanvas.min.js"></script>      	<!-- the canvas plugin -->
 <script type="text/javascript" src="src/jquery.bart.js"></script>       <!-- the main BART plugin -->
 <link rel="stylesheet" type="text/css" href="src/jquery.bart.css" />    <!-- additional styles for to make the BART look fancy -->
+```
+
 Create an element in the body of the page with a unique id-attribute (here: "bart"):
+
+```
 <div id="bart"></div>
+```
+
 Create a script section in the head of the page:
 
+```
 <script type="text/javascript">
 </script>
+```
+
 Initialize the BART script after the page has loaded:
 
+```
 <script type="text/javascript">
 	$(document).ready(function() {   // initialize the BART after the page has loaded
 	});
 </script>
+```
+
 Define the BART (e.g., number and color of balloons) using the id defined in step 2 (see head of src/jquery.bart.js for configuration options):
 
+```
 <script type="text/javascript">
 	$(document).ready(function() {   // initialize the BART after the page has loaded
 		// create a BART with 5 balloons
@@ -146,6 +206,8 @@ Define the BART (e.g., number and color of balloons) using the id defined in ste
 				  } );
 	});
 </script>
+```
+
 If an object including an element s is passed to the bart()-function, element s specifies global settings for the test. For example, bgcol sets the background color of the test and earned specifies the number of initial points earned.
 
 ====
@@ -156,24 +218,38 @@ If an object including an element s is passed to the bart()-function, element s 
 
 Load all required files for the BART in the head of the page:
 
+```
 <script type="text/javascript" src="src/jquery-3.0.0.min.js"></script>	<!-- basic javascript library for dom manipulation -->
 <script type="text/javascript" src="src/jcanvas.min.js"></script>      	<!-- the canvas plugin -->
 <script type="text/javascript" src="src/jquery.bart.js"></script>       <!-- the main BART plugin -->
 <link rel="stylesheet" type="text/css" href="src/jquery.bart.css" />    <!-- additional styles for to make the BART look fancy -->
+```
+
 Create an element in the body of the page with a unique id-attribute (here: "bart"):
+
+```
 <div id="bart"></div>
+```
+
 Create a script section in the head of the page:
 
+```
 <script type="text/javascript">
 </script>
+```
+
 Initialize the BART script after the page has loaded:
 
+```
 <script type="text/javascript">
 	$(document).ready(function() {   // initialize the BART after the page has loaded
 	});
 </script>
+```
+
 Define the BART (e.g., number and color of balloons) using the id defined in step 2 (see head of src/jquery.bart.js for configuration options):
 
+```
 <script type="text/javascript">
 	$(document).ready(function() {   // initialize the BART after the page has loaded
 		// create a BART with 5 balloons
@@ -201,6 +277,8 @@ Define the BART (e.g., number and color of balloons) using the id defined in ste
 				  } );
 	});
 </script>
+```
+
 The element s can also be used to specify the information displayed on the test.
 
 ====
@@ -211,24 +289,38 @@ The element s can also be used to specify the information displayed on the test.
 
 Load all required files for the BART in the head of the page:
 
+```
 <script type="text/javascript" src="src/jquery-3.0.0.min.js"></script>	<!-- basic javascript library for dom manipulation -->
 <script type="text/javascript" src="src/jcanvas.min.js"></script>      	<!-- the canvas plugin -->
 <script type="text/javascript" src="src/jquery.bart.js"></script>       <!-- the main BART plugin -->
 <link rel="stylesheet" type="text/css" href="src/jquery.bart.css" />    <!-- additional styles for to make the BART look fancy -->
+```
+
 Create an element in the body of the page with a unique id-attribute (here: "bart"):
+
+```
 <div id="bart"></div>
+```
+
 Create a script section in the head of the page:
 
+```
 <script type="text/javascript">
 </script>
+```
+
 Initialize the BART script after the page has loaded:
 
+```
 <script type="text/javascript">
 	$(document).ready(function() {   // initialize the BART after the page has loaded
 	});
 </script>
+```
+
 Define the BART (e.g., number and color of balloons) using the id defined in step 2 (see head of src/jquery.bart.js for configuration options):
 
+```
 <script type="text/javascript">
 	$(document).ready(function() {   // initialize the BART after the page has loaded
 		// create a BART with 5 balloons
@@ -246,16 +338,23 @@ Define the BART (e.g., number and color of balloons) using the id defined in ste
 				  } );
 	});
 </script>
-There are several hooks to define your own functions that are invoked after starting the test (onload), after finishing the test (onend), after displaying a balloon (onstart), after inflating an balloon (oninflate), and after an explosion (onexplode). Here the function myexplode is run each time a balloon explodes:
+```
 
+There are several hooks to define your own functions that are invoked after starting the test (onload), after finishing the test (onend), after displaying a balloon (onstart), after inflating an balloon (oninflate), and after an explosion (onexplode). Here the function myexplode is run each time a balloon explodes:
+```
 		// user-defined function invoked after an explosion
 		var myexplode = function() { alert('BOOM! Better luck next time!'); }
+```
 The function myload is run one time right after the BART has been loaded and the user can start the test:
 
+```
 		// user-defined function invoked when starting the BART
 		var myload = function() {  alert('Good luck!'); }
+```
+
 The function myend is run one time right after finishing the BART. Here the number of points are calculated based on the data saved to the hidden form elements:
 
+```
 		// user-defined function invoked after finishing the BART
 		var myend = function() {
 			var points = 0;
@@ -266,3 +365,4 @@ The function myend is run one time right after finishing the BART. Here the numb
 			}
 			alert('You achieved ' + points + ' points.');
 		}
+```

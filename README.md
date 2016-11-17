@@ -1,8 +1,8 @@
-# BART
-====
+# Balloon Analogue Risk Task - BART
 
-Implementation of the Balloon Analogue Risk Task (BART) in JavaScript using scripts from http://timo.gnambs.at/de/scripts/bart .
+Implementation in JavaScript using scripts from http://timo.gnambs.at/de/scripts/bart .
 
+More information on http://www.impulsivity.org/measurement/BART
 
 References
 ----

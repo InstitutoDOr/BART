@@ -25,9 +25,9 @@
 			// create a BART with default values using 10 balloons
 			$("#bart").bart( 
                 { b: [ 
-                        { b: 10, o: { color: 'blue' } },
-                        { b: 10, o: { color: 'red' } },
-                        { b: 10, o: { color: 'yellow' } }
+                        { b: 10, o: { color: 'blue', popprob: 8, min_pump: 2 } },
+                        { b: 10, o: { color: 'red', popprob: 128, min_pump: 2 } },
+                        { b: 10, o: { color: 'yellow', popprob: 32, min_pump: 2 } }
                     ],
                   s: {
                     txt_cashin: 'Receber Grana $$',
@@ -38,7 +38,8 @@
                     txt_current_earned: 'Ganhos: ',
                     txt_total_earned: 'Total salvo: ',
                     txt_prob_explosion: 'Probabilidade de explodir: ',
-                    txt_pumps_used: 'Assopros utilizados: '
+                    txt_pumps_used: 'Assopros utilizados: ',
+                    showpopprob: false
                   }
                 }
             );

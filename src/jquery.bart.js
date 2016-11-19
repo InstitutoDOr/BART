@@ -127,6 +127,7 @@
                 width_factor:    0.03333,    //
                 height_factor:   0.4,        //
                 tie_width:       8,          // width of tie
+                min_pump:        0,          // minimun number of pumps
                 onstart: function() {},      // function to run on new balloon
                 oninflate: function() {},    // function to run after inflation
                 onexplode: function() {}     // function to run after explosion
@@ -247,7 +248,11 @@
             s.earned = 0;
             s.popseq = [];
             s.time = [];
-            for (var i=1; i <= s.popprob; i++) s.popseq.push(i);
+            for (var i=1; i <= s.popprob; i++){ 
+                if( s.min_pump < i ){ // ignoring first min_pump probs
+                    s.popseq.push( i - s.min_pump );
+                }
+            }
             s.popseq.sort(randOrder);               // randomized
                 
             // apply settings to object
@@ -595,21 +600,24 @@
                 .on('click.bart', function(e) {
                         
                     // check for explosion
-                    bal.popseq.sort(randOrder);
-                    if(bal.popseq.shift() == 1) {
+                    if( bal.min_pump <= bal.pumps ){
+                        bal.popseq.sort(randOrder);
+                        if(bal.popseq.shift() == 1) {
+                        
+                            // explode balloon
+                            bal.explode(canvas);
+                                
+                            // show/hide buttons
+                            butInflate.hide();
+                            butCashin.hide();
+                            if(balcnt+1 < bs.length) butNext.show();
+                            else opts.onend();
+                                
+                            
+                        } 
+                    }
                     
-                        // explode balloon
-                        bal.explode(canvas);
-                            
-                        // show/hide buttons
-                        butInflate.hide();
-                        butCashin.hide();
-                        if(balcnt+1 < bs.length) butNext.show();
-                        else opts.onend();
-                            
-                        
-                    } else {
-                        
+                    if( !bal.exploded ) {
                         // inflate balloon
                         bal.radius = bal.radius * (1 + bal.increment);
                         bal.tie_width = bal.tie_width * (1 + bal.increment);

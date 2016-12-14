@@ -1,63 +1,81 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-  
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 
-	<head>
+    <head>
 
-	<title>BART</title>
-        
-	<meta charset="utf-8" />
-	
-	<!-- these files are required for the BART to work    -->
-	<script type="text/javascript" src="src/jquery-3.0.0.min.js"></script>	<!-- basic javascript library for dom manipulation -->
-	<script type="text/javascript" src="src/jcanvas.min.js"></script>      	<!-- the canvas plugin -->
-	<script type="text/javascript" src="src/jquery.bart.js"></script>              <!-- the main BART plugin -->
-	<link rel="stylesheet" type="text/css" href="src/jquery.bart.css" />        <!-- additional styles for to make the BART look fancy -->
-        
-	<!-- additional scripts to run the demo on this page -->
-	<script type="text/javascript">
-	//<![CDATA[
-	
-		// initialize the BART after the page has loaded
-		$(document).ready(function() {
-		
-			// create a BART with default values using 10 balloons
-			$("#bart").bart( 
-                { b: [ 
-                        { b: 10, o: { color: 'blue', popprob: 8, min_pump: 2 } },
-                        { b: 10, o: { color: 'red', popprob: 128, min_pump: 2 } },
-                        { b: 10, o: { color: 'yellow', popprob: 32, min_pump: 2 } }
-                    ],
-                  s: {
-                    txt_cashin: 'Receber Grana $$',
-                    txt_inflate: 'Assoprar',
-                    txt_next: 'Próximo',
-                    txt_balloon_number: 'Balões: ',
-                    txt_number_of_pumps: 'Número de assopros: ',
-                    txt_current_earned: 'Ganhos: ',
-                    txt_total_earned: 'Total salvo: ',
-                    txt_prob_explosion: 'Probabilidade de explodir: ',
-                    txt_pumps_used: 'Assopros utilizados: ',
-                    showpopprob: false
-                  }
-                }
-            );
-		});
-	
-	//]]>
-	</script>
-    
-	</head>
-	<body>
+        <title>BART</title>
 
-	<h1 style="text-align:center;">BART</h1>
-                        
-	<!-- load BART here -->
-	<div id="bart" style="margin: auto; text-align: center;"></div>
+        <meta charset="utf-8" />
 
-	<br /><br/>
-       
-	</body>
+        <!-- these files are required for the BART to work    -->
+        <script type="text/javascript" src="src/jquery-3.0.0.min.js"></script>	<!-- basic javascript library for dom manipulation -->
+        <script type="text/javascript" src="src/jcanvas.min.js"></script>      	<!-- the canvas plugin -->
+        <script type="text/javascript" src="src/jquery.bart.js"></script>              <!-- the main BART plugin -->
+        <link rel="stylesheet" type="text/css" href="src/jquery.bart.css" />        <!-- additional styles for to make the BART look fancy -->
+
+        <!-- additional scripts to run the demo on this page -->
+        <script type="text/javascript">
+            //<![CDATA[
+
+            // initialize the BART after the page has loaded
+            $(document).ready(function () {
+                
+                var bOpts = {
+                    min_pump: 2, 
+                    earnings: 0.25,
+                    onstart: function(){ this.start_time= $.now(); },
+                    onexplode: function(){ this.end_time = $.now(); },
+                    oncashin: function(){ this.end_time = $.now(); }
+                };
+                // create a BART with default values using 10 balloons
+                $("#bart").bart(
+                        {b: [
+                                {b: 5, o: $.extend({color: 'blue', popprob: 8 }, bOpts)},
+                                {b: 5, o: $.extend({color: 'red', popprob: 128 }, bOpts)}
+                                //,{b: 3, o: $.extend({color: 'yellow', popprob: 32}, bOpts)}
+                            ],
+                            s: {
+                                txt_cashin: 'Coletar $$$',
+                                txt_inflate: 'Inflar',
+                                txt_next: 'Próximo',
+                                txt_balloon_number: 'Balões: ',
+                                txt_number_of_pumps: 'Número de assopros: ',
+                                txt_current_earned: 'Ganhos: ',
+                                txt_total_earned: 'Total salvo: ',
+                                txt_prob_explosion: 'Probabilidade de explodir: ',
+                                txt_pumps_used: 'Assopros utilizados: ',
+                                showpopprob: false,
+                                onload: function () {
+                                    this.start_time = $.now();
+                                },
+                                onend: function () {
+                                    this.end_time = $.now();
+                                    this.balloon = null;
+                                    console.log(this);
+                                    console.log(JSON.stringify(this));
+                                    data = {bart: JSON.stringify(this)};
+                                    $.post('save.php', data);
+                                }
+                            }
+                        }
+                );
+            });
+
+            //]]>
+        </script>
+
+    </head>
+    <body>
+
+        <h1 style="text-align:center;">BART</h1>
+
+        <!-- load BART here -->
+        <div id="bart" style="margin: auto; text-align: center;"></div>
+
+        <br/><br/>
+
+    </body>
 
 </html>

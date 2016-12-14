@@ -19,7 +19,7 @@
      * Creates a Ballon Analogue Risk Task (BART). For more information see:
      *  Lejuez, C. W., Read, J. P., Kahler, C. W., Richards, J. B., Ramsey, S. E., & Stuart, G. L. (2002). 
      *      Evaluation of a behavioral measure of risk taking: The Balloon Analogue Risk Task (BART). 
-     *      Journal of Experimental Psychology, 8, 75–84.
+     *      Journal of Experimental Psychology, 8, 75ï¿½84.
      *
      * NOTE: There is no warranty at all that this online test does indeed and can measure
      *       the same construct as the orignial test. If you use this script do it on your own risk!
@@ -130,7 +130,8 @@
                 min_pump:        0,          // minimun number of pumps
                 onstart: function() {},      // function to run on new balloon
                 oninflate: function() {},    // function to run after inflation
-                onexplode: function() {}     // function to run after explosion
+                onexplode: function() {},     // function to run after explosion
+                oncashin: function() {}     // function to run after collect money
             },
             bgcol:               '#FFF',     // background color for complete board
             w:                   600,        // width of board (in pixel)
@@ -162,12 +163,12 @@
             txt_total_earned: 'Total earned: ',              // text for total earnings
             txt_prob_explosion: 'Probability of explosion:', // text for probability of explosion
             txt_pumps_used: 'Max. available pumps used:',    // text for percentage of used pumps
+            balloons: [],
             onload:    function() {},        // function to run before loading the script 
             onend:    function() {}          // function to run after finishing the last balloon 
         };
         
         var canvas = null, snds = {}, r = [];
-
         
         /****************************/
         // set user defined options //
@@ -362,9 +363,6 @@
                 }
             }
             
-            // on inflate hook
-            this.oninflate();
-            
         }
         
         
@@ -421,6 +419,7 @@
             r = r + ([this.id, this.pumps, (this.exploded)*1, t]).join(opts.separator[0]);
             r = r +  opts.separator[1];
             $('#' + opts.frmid).val(r);
+            opts.balloons.push(this);
         }
         
         
@@ -711,7 +710,7 @@
                     margin: '0 20px' 
                 })
                 .on('click.bart', function(e) {
-                       
+                    bal.oncashin();
                     // update counts
                     opts.earned = (opts.earned*1 + bal.earned*1).toFixed(2);
                     if(opts.showtotalearned) {
@@ -737,7 +736,7 @@
                 var balcnt = 0;
                 bal = new balloon( bs[0] );
                 bal.inflate(canvas);
-                    
+                
             });   
             
         };

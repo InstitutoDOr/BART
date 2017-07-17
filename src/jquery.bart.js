@@ -356,11 +356,11 @@
                                 
             // sound
             if(opts.sounds == true & this.pumps > 0) {
-                if((new Audio()).canPlayType("audio/mpeg") != "") {   // mp3 for IE
+                /*if((new Audio()).canPlayType("audio/mpeg") != "") {   // mp3 for IE
                     (new Audio(opts.sndpath + 'inflate.mp3')).play();
                 } else if((new Audio()).canPlayType("audio/x-wav")) { // wav for the rest
                     (new Audio(opts.sndpath + 'inflate.wav')).play();
-                }
+                }*/
             }
             
         }

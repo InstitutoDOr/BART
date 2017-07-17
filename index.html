@@ -18,10 +18,23 @@
         <!-- additional scripts to run the demo on this page -->
         <script type="text/javascript">
             //<![CDATA[
-
+            var SUBJID;
+            
+            // Helper for enterKey in inputs
+            $.fn.enterKey = function (fnc) {
+                return this.each(function () {
+                    $(this).keypress(function (ev) {
+                        var keycode = (ev.keyCode ? ev.keyCode : ev.which);
+                        if (keycode == '13') {
+                            fnc.call(this, ev);
+                        }
+                    })
+                })
+            }
+            
             // initialize the BART after the page has loaded
             $(document).ready(function () {
-                
+                // Setup BART
                 var bOpts = {
                     min_pump: 2, 
                     earnings: 0.25,
@@ -37,16 +50,17 @@
                                 //,{b: 3, o: $.extend({color: 'yellow', popprob: 32}, bOpts)}
                             ],
                             s: {
-                                txt_cashin: 'Coletar $$$',
+                                txt_cashin: 'Coletar R$',
                                 txt_inflate: 'Inflar',
                                 txt_next: 'Próximo',
                                 txt_balloon_number: 'Balões: ',
                                 txt_number_of_pumps: 'Número de assopros: ',
                                 txt_current_earned: 'Ganhos: ',
-                                txt_total_earned: 'Total salvo: ',
+                                txt_total_earned: 'Total salvo: R$ ',
                                 txt_prob_explosion: 'Probabilidade de explodir: ',
                                 txt_pumps_used: 'Assopros utilizados: ',
                                 showpopprob: false,
+                                sounds: false,
                                 onload: function () {
                                     this.start_time = $.now();
                                 },
@@ -55,12 +69,16 @@
                                     this.balloon = null;
                                     console.log(this);
                                     console.log(JSON.stringify(this));
-                                    data = {bart: JSON.stringify(this)};
+                                    data = {bart: JSON.stringify(this), subjid: SUBJID};
                                     $.post('save.php', data);
                                 }
                             }
                         }
                 );
+                
+                // Getting SUBJID
+                SUBJID = prompt("SUBJID:", "");
+                $('#subjid').text( SUBJID );
             });
 
             //]]>
@@ -68,13 +86,13 @@
 
     </head>
     <body>
-
-        <h1 style="text-align:center;">BART</h1>
-
-        <!-- load BART here -->
-        <div id="bart" style="margin: auto; text-align: center;"></div>
-
-        <br/><br/>
+        <div style="width: 600px; margin:auto;">            
+            <h1 style="text-align: center;">BART</h1>
+            <h3 id="subjid">SUBJID</h3>
+            <!-- load BART here -->
+            <div id="bart"></div>
+            <br/><br/>
+        </div>
 
     </body>
 

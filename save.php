@@ -5,13 +5,15 @@ function dtMili($data) {
 }
 
 $data = json_decode($_POST['bart']);
+$subjid = $_POST['subjid'];
 //$data = json_decode(file_get_contents('reports/test.csv'));
 
-$filename = sprintf('reports/bart_report_%s.csv', date('Ymd.His'));
+$filename = sprintf('reports/bart_report_%s_%s.csv', date('Ymd.His'), $subjid);
 
 $report = '';
 
-$report = "Início:\t" . date('Y-m-d H:i:s', $data->start_time / 1000) . "\n";
+$report  = "SUBJID:\t{$subjid}\n";
+$report .= "Início:\t" . date('Y-m-d H:i:s', $data->start_time / 1000) . "\n";
 $report .= "Término:\t" . date('Y-m-d H:i:s', $data->end_time / 1000) . "\n\n";
 $report .= "Balões\n";
 $report .= "Cor\tMax Pump\tGanho\tTotal Assopros\tInício\tTérmino\tTempos assopros (s)\n";

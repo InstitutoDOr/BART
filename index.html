@@ -45,18 +45,18 @@
                 // create a BART with default values using 10 balloons
                 $("#bart").bart(
                         {b: [
-                                {b: 5, o: $.extend({color: 'blue', popprob: 8 }, bOpts)},
-                                {b: 5, o: $.extend({color: 'red', popprob: 128 }, bOpts)}
+                                {b: 30, o: $.extend({color: 'blue', popprob: 8 }, bOpts)},
+                                {b: 30, o: $.extend({color: 'red', popprob: 128 }, bOpts)}
                                 //,{b: 3, o: $.extend({color: 'yellow', popprob: 32}, bOpts)}
                             ],
                             s: {
-                                txt_cashin: 'Coletar R$',
+                                txt_cashin: 'Coletar $$$',
                                 txt_inflate: 'Inflar',
                                 txt_next: 'Próximo',
                                 txt_balloon_number: 'Balões: ',
                                 txt_number_of_pumps: 'Número de assopros: ',
                                 txt_current_earned: 'Ganhos: ',
-                                txt_total_earned: 'Total salvo: R$ ',
+                                txt_total_earned: 'Total acumulado: R$ ',
                                 txt_prob_explosion: 'Probabilidade de explodir: ',
                                 txt_pumps_used: 'Assopros utilizados: ',
                                 showpopprob: false,
@@ -88,7 +88,7 @@
     <body>
         <div style="width: 600px; margin:auto;">            
             <h1 style="text-align: center;">BART</h1>
-            <h3 id="subjid">SUBJID</h3>
+            <h3 id="subjid">_____</h3>
             <!-- load BART here -->
             <div id="bart"></div>
             <br/><br/>
